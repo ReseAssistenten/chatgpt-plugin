@@ -8,7 +8,7 @@
     "url": "https://mindtravel.se"
   },
   "homepage": "https://reseassistenten.se",
-  "repository": "https://github.com/ReseAassistenten/chatgpt-plugin",
+  "repository": "https://github.com/ReseAssistenten/chatgpt-plugin",
   "license": "MIT",
   "keywords": ["travel", "trips", "bookings", "itinerary", "sas", "eurobonus", "reseassistenten"],
   "mcpServers": "./.mcp.json",

@@ -34,7 +34,7 @@ Privacy policy: https://reseassistenten.se/privacy · Terms: https://reseassiste
 **Codex CLI** (confirm the exact install verb against the current Codex plugin docs):
 
 ```bash
-codex plugin marketplace add ReseAassistenten/chatgpt-plugin
+codex plugin marketplace add ReseAssistenten/chatgpt-plugin
 codex plugin install reseassistenten@mindtravel
 ```
 
@@ -44,7 +44,7 @@ Before then it can be added privately in **Developer Mode** (Settings → Apps &
 Advanced) using the server URL `https://reseassistenten.se/mcp`.
 
 **Claude users:** use the companion Claude plugin in
-[`ReseAassistenten/plugin`](https://github.com/ReseAassistenten/plugin).
+[`ReseAssistenten/plugin`](https://github.com/ReseAssistenten/plugin).
 
 ## Manifests in this repo
 
