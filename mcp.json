@@ -4,14 +4,7 @@
     "reseassistenten": {
       "type": "streamable-http",
       "url": "https://reseassistenten.se/mcp",
-      "extensions": {
-        "com.openai": {
-          "auth": {
-            "type": "oauth",
-            "client": { "mode": "dcr" }
-          }
-        }
-      }
+      "oauth_resource": "https://reseassistenten.se/mcp"
     }
   }
 }
