@@ -3,7 +3,8 @@
   "mcpServers": {
     "reseassistenten": {
       "type": "streamable-http",
-      "url": "https://reseassistenten.se/mcp"
+      "url": "https://reseassistenten.se/mcp",
+      "oauth_resource": "https://reseassistenten.se/mcp"
     }
   }
 }
