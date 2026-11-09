@@ -13,3 +13,7 @@ __MACOSX/
 dist/
 node_modules/
 *.zip
+
+# Local ops (never published): submission package holds demo creds + internal notes
+SUBMISSION-CHATGPT.md
+.webhook-secret
