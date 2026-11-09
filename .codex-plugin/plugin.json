@@ -14,13 +14,16 @@
   "mcpServers": "./.mcp.json",
   "interface": {
     "displayName": "ReseAssistenten",
-    "shortDescription": "Plan trips on your own ReseAssistenten travel data.",
-    "longDescription": "Connect ChatGPT/Codex to your own ReseAssistenten account: plan SAS award trips, run Resekontroll, coach your EuroBonus status and explore award-winning destinations. Declares the hosted, per-user-authenticated MCP server at https://reseassistenten.se/mcp as a remote server. On first use your browser opens for OAuth login + consent on ReseAssistenten (dynamic client registration) — no tokens or secrets are stored in this plugin. The agent acts with exactly the permissions you have on the web.",
+    "shortDescription": "Plan award trips & EuroBonus",
+    "longDescription": "ReseAssistenten is a travel-planning assistant for your own account: search SAS award flights (Europe and intercontinental), run pre-trip readiness checks (Resekontroll) with entry requirements, track your EuroBonus level-point status and the cheapest way to the next tier, set award-availability watches, and explore award-winning restaurants, hotels and beaches across destinations. It connects to the hosted, per-user-authenticated ReseAssistenten MCP server over OAuth (dynamic client registration) — no tokens or secrets are stored in this plugin — and acts with exactly the permissions you have on the web.",
     "developerName": "Mindtravel",
-    "category": "Travel",
+    "category": "Productivity",
     "capabilities": ["Interactive", "Write"],
     "websiteURL": "https://reseassistenten.se/connect-agent",
+    "supportURL": "https://reseassistenten.se/help",
     "privacyPolicyURL": "https://reseassistenten.se/privacy",
-    "termsOfServiceURL": "https://reseassistenten.se/terms"
+    "termsOfServiceURL": "https://reseassistenten.se/terms",
+    "logo": "./icon.png",
+    "composerIcon": "./icon.png"
   }
 }

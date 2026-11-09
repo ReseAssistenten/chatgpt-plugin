@@ -2,7 +2,7 @@
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "reseassistenten",
   "version": "0.1.0",
-  "description": "Connect ChatGPT or Codex to ReseAssistenten: read your trips, bookings, travel documents and travel-planning intelligence on your behalf, with exactly the permissions you have on the web.",
+  "description": "ReseAssistenten is a travel-planning assistant: search SAS award flights, run pre-trip readiness checks (Resekontroll), track EuroBonus status, and explore award-winning destinations — on your own account.",
   "author": {
     "name": "Mindtravel",
     "email": "reseassistenten@mindtravel.se",
@@ -12,17 +12,23 @@
   "icon": "https://reseassistenten.se/images/favicon/icon-512x512.png",
   "contactEmail": "reseassistenten@mindtravel.se",
   "license": "MIT",
-  "keywords": ["travel", "trips", "bookings", "itinerary", "reseassistenten"],
+  "keywords": ["travel", "trips", "bookings", "itinerary", "sas", "eurobonus", "reseassistenten"],
   "extensions": {
     "com.openai": {
       "interface": {
         "displayName": "ReseAssistenten",
         "developerName": "Mindtravel",
-        "shortDescription": "Read your trips, bookings and travel documents on your behalf.",
-        "longDescription": "A portable Agent Plugin for ReseAssistenten (https://reseassistenten.se). It declares the hosted, per-user-authenticated MCP server at https://reseassistenten.se/mcp as a remote Streamable-HTTP server. On first use your browser opens for OAuth login + consent on ReseAssistenten (dynamic client registration, discovered from the server) — no tokens or secrets are stored in this plugin. The agent acts with exactly the permissions you have on the web.",
+        "category": "Productivity",
+        "capabilities": ["Interactive", "Write"],
+        "shortDescription": "Plan award trips & EuroBonus",
+        "longDescription": "ReseAssistenten is a travel-planning assistant for your own account: search SAS award flights (Europe and intercontinental), run pre-trip readiness checks (Resekontroll) with entry requirements, track your EuroBonus level-point status and the cheapest way to the next tier, set award-availability watches, and explore award-winning restaurants, hotels and beaches across destinations. It connects to the hosted, per-user-authenticated ReseAssistenten MCP server over OAuth (dynamic client registration) — no tokens or secrets are stored in this plugin — and acts with exactly the permissions you have on the web.",
         "websiteURL": "https://reseassistenten.se/connect-agent",
+        "supportURL": "https://reseassistenten.se/help",
         "privacyPolicyURL": "https://reseassistenten.se/privacy",
-        "termsOfUseURL": "https://reseassistenten.se/terms"
+        "termsOfServiceURL": "https://reseassistenten.se/terms",
+        "logo": "./icon.png",
+        "composerIcon": "./icon.png",
+        "defaultPrompt": ["Show my trips, check my EuroBonus status, or find SAS award seats"]
       }
     }
   }

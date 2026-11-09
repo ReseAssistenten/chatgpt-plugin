@@ -46,7 +46,7 @@ if (plugin) {
     errors.push('plugin.json: contactEmail must be a valid support email address.');
   }
   const iface = (plugin.extensions && plugin.extensions['com.openai'] && plugin.extensions['com.openai'].interface) || {};
-  for (const [field, label] of [['privacyPolicyURL', 'privacy policy'], ['termsOfUseURL', 'terms of use']]) {
+  for (const [field, label] of [['privacyPolicyURL', 'privacy policy'], ['termsOfServiceURL', 'terms of service']]) {
     if (typeof iface[field] !== 'string' || !/^https:\/\//.test(iface[field])) {
       errors.push(`plugin.json: extensions.com.openai.interface.${field} must be an https ${label} URL.`);
     }
