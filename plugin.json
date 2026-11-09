@@ -29,57 +29,6 @@
         "logo": "./icon.png",
         "composerIcon": "./icon.png",
         "defaultPrompt": ["Show my trips, check my EuroBonus status, or find SAS award seats"]
-      },
-      "review": {
-        "test_cases": {
-          "positive": [
-            {
-              "description": "List the signed-in user's upcoming trips.",
-              "prompt": "Show my upcoming trips.",
-              "tools_triggered": "list_trips",
-              "expected_behavior": "Calls list_trips and returns the user's upcoming trips with destinations and dates."
-            },
-            {
-              "description": "Run the trip-readiness review (Resekontroll) on a trip and summarise what needs attention.",
-              "prompt": "Run Resekontroll on my next trip and tell me what needs attention before I go.",
-              "tools_triggered": "get_trip_resekontroll",
-              "expected_behavior": "Resolves the trip, calls get_trip_resekontroll (and get_entry_requirements), and returns a prioritised action list."
-            },
-            {
-              "description": "Report EuroBonus level-point progress and the gap to the next tier.",
-              "prompt": "How many EuroBonus level points until Gold, and the cheapest way to get there?",
-              "tools_triggered": "eurobonus_status",
-              "expected_behavior": "Calls eurobonus_status and returns current and projected level points, the gap to Gold, and the lowest-cost card-spend option."
-            },
-            {
-              "description": "Search SAS intercontinental award availability for a route, cabin and month.",
-              "prompt": "Find SAS business-class award seats from Stockholm to Tokyo in March.",
-              "tools_triggered": "search_longhaul_awards",
-              "expected_behavior": "Calls search_longhaul_awards for ARN to HND in BUSINESS and returns an award calendar with points, taxes and booking links."
-            },
-            {
-              "description": "Browse award-winning experiences near a destination.",
-              "prompt": "What are the best restaurants in Tokyo?",
-              "tools_triggered": "explore",
-              "expected_behavior": "Calls explore for restaurants near Tokyo and returns award-winning restaurants with their awards and locations."
-            }
-          ],
-          "negative": [
-            {
-              "description": "Live weather is not a ReseAssistenten capability; the plugin should not trigger.",
-              "prompt": "What's the weather in Tokyo right now?"
-            },
-            {
-              "description": "Purchases and paid bookings are never available through the connector; it should not trigger to buy or pay.",
-              "prompt": "Book and pay for a flight to Paris for me."
-            },
-            {
-              "description": "General text translation is unrelated to the user's travel data; the plugin should not trigger.",
-              "prompt": "Translate this paragraph into French for me."
-            }
-          ]
-        },
-        "commerce": false
       }
     }
   }
