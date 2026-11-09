@@ -1,0 +1,29 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "reseassistenten",
+  "version": "0.1.0",
+  "description": "Connect ChatGPT or Codex to ReseAssistenten: read your trips, bookings, travel documents and travel-planning intelligence on your behalf, with exactly the permissions you have on the web.",
+  "author": {
+    "name": "Mindtravel",
+    "email": "reseassistenten@mindtravel.se",
+    "url": "https://mindtravel.se"
+  },
+  "homepage": "https://reseassistenten.se/connect-agent",
+  "icon": "https://reseassistenten.se/images/favicon/icon-512x512.png",
+  "contactEmail": "reseassistenten@mindtravel.se",
+  "license": "MIT",
+  "keywords": ["travel", "trips", "bookings", "itinerary", "reseassistenten"],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "ReseAssistenten",
+        "developerName": "Mindtravel",
+        "shortDescription": "Read your trips, bookings and travel documents on your behalf.",
+        "longDescription": "A portable Agent Plugin for ReseAssistenten (https://reseassistenten.se). It declares the hosted, per-user-authenticated MCP server at https://reseassistenten.se/mcp as a remote Streamable-HTTP server. On first use your browser opens for OAuth login + consent on ReseAssistenten (dynamic client registration, discovered from the server) — no tokens or secrets are stored in this plugin. The agent acts with exactly the permissions you have on the web.",
+        "websiteURL": "https://reseassistenten.se/connect-agent",
+        "privacyPolicyURL": "https://reseassistenten.se/privacy",
+        "termsOfUseURL": "https://reseassistenten.se/terms"
+      }
+    }
+  }
+}

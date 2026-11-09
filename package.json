@@ -1,0 +1,12 @@
+{
+  "name": "reseassistenten-chatgpt-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Portable OpenAI Agent Plugin (plugin.json + mcp.json) that connects ChatGPT and Codex to the ReseAssistenten remote MCP server over OAuth.",
+  "scripts": {
+    "validate": "node scripts/validate.js",
+    "pack": "node scripts/validate.js && rm -rf dist && mkdir -p dist && zip -j dist/reseassistenten-chatgpt-plugin.zip plugin.json mcp.json README.md",
+    "pack:win": "node scripts/validate.js && powershell -NoProfile -Command \"Remove-Item -Recurse -Force dist -ErrorAction SilentlyContinue; New-Item -ItemType Directory -Force dist | Out-Null; Compress-Archive -Force -Path plugin.json,mcp.json,README.md -DestinationPath dist/reseassistenten-chatgpt-plugin.zip\"",
+    "build": "npm run pack"
+  }
+}

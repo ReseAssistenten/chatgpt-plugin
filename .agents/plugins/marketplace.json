@@ -1,0 +1,20 @@
+{
+  "name": "mindtravel",
+  "interface": {
+    "displayName": "Mindtravel"
+  },
+  "plugins": [
+    {
+      "name": "reseassistenten",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Travel"
+    }
+  ]
+}
