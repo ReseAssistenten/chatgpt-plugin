@@ -70,11 +70,22 @@ if (mcp) {
     if (typeof s.url !== 'string' || !/^https:\/\//.test(s.url)) {
       errors.push(`mcp.json: server "${name}" must have an https url.`);
     }
-    // No secret may ever be baked in — OAuth is discovered from the server (DCR).
+    // No credential may ever be baked in. DCR registers dynamically, so a client
+    // id/secret must never ship; nor may a bearer token / API key value. OAuth
+    // endpoint URLs (authorizationUrl, tokenUrl, registrationUrl) are declarative
+    // metadata — NOT secrets — so we check credential KEYS and secret-looking
+    // VALUES, never substrings of those legitimate field names.
+    const auth = (s.extensions && s.extensions['com.openai'] && s.extensions['com.openai'].auth) || {};
+    const client = auth.client || {};
+    for (const credKey of ['clientId', 'client_id', 'clientSecret', 'client_secret', 'apiKey', 'api_key']) {
+      if (Object.prototype.hasOwnProperty.call(client, credKey) || Object.prototype.hasOwnProperty.call(auth, credKey)) {
+        errors.push(`mcp.json: server "${name}" auth must not bake in a credential ("${credKey}") — DCR registers dynamically.`);
+      }
+    }
     const blob = JSON.stringify(s).toLowerCase();
-    for (const forbidden of ['clientsecret', 'client_secret', 'authorization', 'bearer', 'token', 'apikey', 'api_key']) {
+    for (const forbidden of ['bearer ', 'clientsecret', 'client_secret', 'apikey', 'api_key']) {
       if (blob.includes(forbidden)) {
-        errors.push(`mcp.json: server "${name}" must not contain a secret ("${forbidden}") — OAuth is discovered from the server.`);
+        errors.push(`mcp.json: server "${name}" must not contain a secret value ("${forbidden.trim()}").`);
       }
     }
   }

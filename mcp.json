@@ -3,7 +3,23 @@
   "mcpServers": {
     "reseassistenten": {
       "type": "streamable-http",
-      "url": "https://reseassistenten.se/mcp"
+      "url": "https://reseassistenten.se/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            },
+            "authorizationUrl": "https://reseassistenten.se/oauth/authorize",
+            "tokenUrl": "https://reseassistenten.se/oauth/token",
+            "registrationUrl": "https://reseassistenten.se/oauth/register",
+            "authorizationServerBase": "https://reseassistenten.se",
+            "resource": "https://reseassistenten.se/mcp",
+            "baseScopes": ["mcp:use"]
+          }
+        }
+      }
     }
   }
 }
