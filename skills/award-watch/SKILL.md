@@ -9,8 +9,8 @@ Set up and manage award watches on the user's own account via the `reseassistent
 
 ## Tools
 - `list_award_watches` / `get_award_watch` / `get_award_watch_matches` — see existing watches and their hits.
-- `create_award_watch` / `update_award_watch` / `set_award_watch_active` — create, edit, pause/resume (require the `write` scope).
-- `delete_award_watch` — remove a watch (destructive; needs `confirm: true`).
+- `create_award_watch` / `update_award_watch` / `set_award_watch_active` — create, edit, pause/resume (require the `write` permission).
+- `delete_award_watch` — remove a watch (requires the `delete` permission and `confirm: true`; confirm with the user first).
 
 ## Workflow
 1. **Avoid duplicates.** Call `list_award_watches` first so you don't recreate an existing watch.

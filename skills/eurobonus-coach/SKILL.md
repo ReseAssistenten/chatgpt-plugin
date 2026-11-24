@@ -18,4 +18,6 @@ Help the user reach their next SAS EuroBonus level, on their own account via the
 3. **Use every lever.** Flights (flown + planned), shopping log (paid + planned), **Changemaker** (extra 5000 level points per calendar year — up to 2×5000 when the earning year spans two calendar years), and the `card_spend` calculator / `recommend_card` (`reach_status`) for the cheapest card to close the remaining gap.
 4. **Deliver a plan.** Concisely: how many points short, and the specific mix (flights / shopping log / Changemaker / card spend) that closes it, with the lowest-spend option highlighted.
 
+The earning period is always `earning_year_from`/`earning_year_through` from `eurobonus_status`; never derive it, a deadline or remaining months from any other date.
+
 Never reveal a membership number. Purchases are not available through the connector.

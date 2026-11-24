@@ -3,6 +3,18 @@
 All notable changes to the ReseAssistenten ChatGPT/Codex plugin are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] - 2026-11-24
+
+### Changed
+- Catalog copy now describes SAS award trips, EuroBonus, Resekontroll and trip planning;
+  third-party list names and venue-type marketing removed from the description,
+  starter prompts and skills.
+- Skill `explore-destinations` renamed to `destination-guide` with a neutral description.
+  The tools it uses (`explore`, `search_destinations`, `get_destination_guide`) are unchanged.
+- Shared catalog copy: one short and long description and five example questions, the same
+  text as the web connector manifest, the MCP Registry entry and llms.txt. States that MCP
+  access is included in Premium. Starter prompts use the shared example questions.
+
 ## [0.1.0] — 2026-11-09
 
 ### Added

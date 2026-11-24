@@ -1,13 +1,19 @@
-# ReseAssistenten — ChatGPT / Codex plugin
+# ReseAssistenten: ChatGPT / Codex plugin
 
-> **Svenska:** Det här pluginet kopplar ChatGPT eller Codex till ditt eget
-> ReseAssistenten-konto så att assistenten kan planera SAS award-resor, köra
-> Resekontroll, coacha din EuroBonus-status och utforska prisbelönta destinationer —
-> med exakt de rättigheter du har på webben. Kräver ett ReseAssistenten-konto.
-> Utgivare: Mindtravel.
+> **Svenska:** Reseplanering, SAS-bonusresor och EuroBonus för din AI-agent via MCP. Kräver
+> ett ReseAssistenten-konto med Premium. Utgivare: Mindtravel.
 
-Connect ChatGPT or Codex to your own **ReseAssistenten** account — acting with exactly the
-permissions you have on the web.
+Trip planning, SAS award flights and EuroBonus for your AI agent via MCP.
+
+ReseAssistenten connects your AI agent via MCP to your own ReseAssistenten account for trip planning, SAS award flights and EuroBonus. The agent can manage your trips, bookings and travel documents, search SAS award flights in Europe and on Longhaul routes, watch a route for award seats, check that a trip is in order with Resekontroll and follow your EuroBonus status, with exactly the permissions you have on the web. Access uses OAuth with login and consent on ReseAssistenten, and no secret is stored in the agent. MCP access is included in Premium, at no extra cost. Free accounts have no MCP access.
+
+## Example questions
+
+- "Are there any SAS award seats in Business from Stockholm to Tokyo in March?"
+- "Watch Copenhagen to New York in Plus for the first two weeks of June and tell me when seats open."
+- "Is my trip to Lisbon in order? What do I still need to do before I leave?"
+- "How many level points do I need for EuroBonus Gold, and how can I close the gap this year?"
+- "Add my new booking to the trip to Bangkok."
 
 ## What it does & what data it sends
 
@@ -16,12 +22,12 @@ The plugin declares ReseAssistenten's hosted, **per-user-authenticated MCP serve
 skills.
 
 - On first use your browser opens for **OAuth login + consent** on ReseAssistenten
-  (dynamic client registration — **no tokens or secrets are stored in this plugin**).
+  (dynamic client registration; **no tokens or secrets are stored in this plugin**).
 - Once connected, the assistant reads (and, with the write permissions you grant, edits)
   **your own** trips, bookings, travel documents, award availability, EuroBonus status and
-  destination catalogue — scoped to exactly what your ReseAssistenten web account can see.
+  destination catalogue, scoped to exactly what your ReseAssistenten web account can see.
 - Data flows only between your agent client and `https://reseassistenten.se`.
-- Read is available on the free tier; purchases are never available through the connector.
+- MCP access is included in Premium; purchases are never available through the connector.
 
 Privacy policy: https://reseassistenten.se/privacy · Terms: https://reseassistenten.se/terms
 
@@ -54,7 +60,7 @@ Advanced) using the server URL `https://reseassistenten.se/mcp`.
 | `.agents/plugins/marketplace.json` | Codex-native marketplace entry (`policy.installation: AVAILABLE`). |
 | `plugin.json` | Cross-vendor agent-plugins.org manifest with the OpenAI `interface` metadata. |
 | `.mcp.json` / `mcp.json` | The remote MCP server (`https://reseassistenten.se/mcp`). |
-| `skills/` | Guided workflows (award-trip-planning, resekontroll, eurobonus-coach, award-watch, explore-destinations). |
+| `skills/` | Guided workflows (award-trip-planning, resekontroll, eurobonus-coach, award-watch, destination-guide). |
 
 > Skills/slash-commands are a Claude concept; in ChatGPT/Codex the workflow lives in the
 > tool design + descriptions. The skills are included for Codex clients that read them.

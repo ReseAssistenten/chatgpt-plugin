@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "reseassistenten",
-  "version": "0.1.0",
-  "description": "ReseAssistenten is a travel-planning productivity assistant: keep your trips organized, run pre-departure readiness checks (Resekontroll) so nothing falls through the cracks, track your EuroBonus progress, and plan award flights — all on your own account.",
+  "version": "0.2.0",
+  "description": "Trip planning, SAS award flights and EuroBonus for your AI agent via MCP.",
   "author": {
     "name": "Mindtravel",
     "email": "reseassistenten@mindtravel.se",
@@ -20,15 +20,15 @@
         "developerName": "Mindtravel",
         "category": "Productivity",
         "capabilities": ["Interactive", "Write"],
-        "shortDescription": "Plan trips & track EuroBonus",
-        "longDescription": "ReseAssistenten is a personal travel-planning productivity tool for your own account. Keep every trip organized in one place, run pre-departure readiness checks (Resekontroll) with entry requirements so you know exactly what to do before you go, track your EuroBonus level-point progress and the cheapest route to the next tier, set award-availability reminders, plan SAS award flights (Europe and intercontinental), and shortlist award-winning places to eat and stay. It connects to the hosted, per-user-authenticated ReseAssistenten MCP server over OAuth (dynamic client registration) — no tokens or secrets are stored in this plugin — and acts with exactly the permissions you have on the web.",
+        "shortDescription": "SAS award trips and EuroBonus",
+        "longDescription": "ReseAssistenten connects your AI agent via MCP to your own ReseAssistenten account for trip planning, SAS award flights and EuroBonus. The agent can manage your trips, bookings and travel documents, search SAS award flights in Europe and on Longhaul routes, watch a route for award seats, check that a trip is in order with Resekontroll and follow your EuroBonus status, with exactly the permissions you have on the web. Access uses OAuth with login and consent on ReseAssistenten, and no secret is stored in the agent. MCP access is included in Premium, at no extra cost. Free accounts have no MCP access.",
         "websiteURL": "https://reseassistenten.se/en/ai-assistant",
         "supportURL": "https://reseassistenten.se/en/help",
         "privacyPolicyURL": "https://reseassistenten.se/privacy",
         "termsOfServiceURL": "https://reseassistenten.se/terms",
         "logo": "./icon.png",
         "composerIcon": "./icon.png",
-        "defaultPrompt": ["Show my trips, check my EuroBonus status, or find SAS award seats"]
+        "defaultPrompt": ["Are there any SAS award seats in Business from Stockholm to Tokyo in March?", "Watch Copenhagen to New York in Plus for the first two weeks of June and tell me when seats open.", "Is my trip to Lisbon in order? What do I still need to do before I leave?"]
       },
       "review": {
         "test_cases": {
@@ -37,7 +37,7 @@
             { "description": "Run the trip-readiness review (Resekontroll) on a trip and summarise what needs attention.", "prompt": "Run Resekontroll on my next trip and tell me what needs attention before I go.", "tools_triggered": "get_trip_resekontroll", "expected_behavior": "Resolves the trip, calls get_trip_resekontroll (and get_entry_requirements), and returns a prioritised action list." },
             { "description": "Report EuroBonus level-point progress and the gap to the next tier.", "prompt": "How many EuroBonus level points until Gold, and the cheapest way to get there?", "tools_triggered": "eurobonus_status", "expected_behavior": "Calls eurobonus_status and returns current and projected level points, the gap to Gold, and the lowest-cost card-spend option." },
             { "description": "Search SAS intercontinental award availability for a route, cabin and month.", "prompt": "Find SAS business-class award seats from Stockholm to Tokyo in March.", "tools_triggered": "search_longhaul_awards", "expected_behavior": "Calls search_longhaul_awards for ARN to HND in BUSINESS and returns an award calendar with points, taxes and booking links." },
-            { "description": "Browse award-winning experiences near a destination.", "prompt": "What are the best restaurants in Tokyo?", "tools_triggered": "explore", "expected_behavior": "Calls explore for restaurants near Tokyo and returns award-winning restaurants with their awards and locations." }
+            { "description": "Search SAS Europe award availability for a route and month.", "prompt": "Are there SAS award seats from Stockholm to Nice in June?", "tools_triggered": "search_europe_awards", "expected_behavior": "Calls search_europe_awards for ARN to NCE in June and returns the dates with award seats, points and booking links." }
           ],
           "negative": [
             { "description": "Live weather is not a ReseAssistenten capability; the plugin should not trigger.", "prompt": "What's the weather in Tokyo right now?" },
