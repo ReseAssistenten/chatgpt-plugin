@@ -37,15 +37,31 @@ if (plugin) {
   if (typeof plugin.name !== 'string' || !/^[a-z0-9](?:[a-z0-9.-]*[a-z0-9])?$/.test(plugin.name) || plugin.name.includes('--') || plugin.name.includes('..')) {
     errors.push('plugin.json: name must be kebab-case (lowercase alphanumeric with hyphens/periods, no leading/trailing symbol, no "--" or "..").');
   }
-  // E171S02 — submission prerequisites: an https icon, a support contact, and the
-  // live Privacy + Terms policy URLs (the platform catalogs require all of them).
-  if (typeof plugin.icon !== 'string' || !/^https:\/\/.+\.(png|svg)$/i.test(plugin.icon)) {
-    errors.push('plugin.json: icon must be an https URL to a .png or .svg connector icon.');
+  // The Agent Plugins 1.0.0 plugin schema has additionalProperties: false at the top
+  // level. Any other key (e.g. `icon`, `contactEmail`) makes the whole manifest invalid,
+  // so ChatGPT rejects the plugin. Client data belongs under `extensions`.
+  const allowedTop = ['$schema', 'name', 'version', 'description', 'author', 'homepage', 'license', 'keywords', 'extensions'];
+  for (const key of Object.keys(plugin)) {
+    if (!allowedTop.includes(key)) {
+      errors.push(`plugin.json: top-level "${key}" is not allowed by the Agent Plugins 1.0.0 schema (additionalProperties: false).`);
+    }
   }
-  if (typeof plugin.contactEmail !== 'string' || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(plugin.contactEmail)) {
-    errors.push('plugin.json: contactEmail must be a valid support email address.');
+  if (plugin.author !== undefined) {
+    const extra = Object.keys(plugin.author || {}).filter((k) => !['name', 'email', 'url'].includes(k));
+    if (extra.length) {
+      errors.push(`plugin.json: author may only contain name, email, url (found ${extra.join(', ')}).`);
+    }
   }
   const iface = (plugin.extensions && plugin.extensions['com.openai'] && plugin.extensions['com.openai'].interface) || {};
+  if (iface.defaultPrompt !== undefined && typeof iface.defaultPrompt !== 'string') {
+    errors.push('plugin.json: extensions.com.openai.interface.defaultPrompt must be a single string.');
+  }
+  // Relative asset paths must ship in the bundle (see the pack scripts in package.json).
+  for (const field of ['logo', 'composerIcon']) {
+    if (typeof iface[field] === 'string' && iface[field].startsWith('./') && !fs.existsSync(path.join(ROOT, iface[field]))) {
+      errors.push(`plugin.json: extensions.com.openai.interface.${field} points to ${iface[field]}, which does not exist.`);
+    }
+  }
   for (const [field, label] of [['privacyPolicyURL', 'privacy policy'], ['termsOfServiceURL', 'terms of service']]) {
     if (typeof iface[field] !== 'string' || !/^https:\/\//.test(iface[field])) {
       errors.push(`plugin.json: extensions.com.openai.interface.${field} must be an https ${label} URL.`);

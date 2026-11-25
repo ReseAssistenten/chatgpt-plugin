@@ -3,6 +3,14 @@
 All notable changes to the ReseAssistenten ChatGPT/Codex plugin are documented here.
 This project adheres to [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] - 2026-11-25
+
+### Fixed
+- plugin.json now validates against the Agent Plugins 1.0.0 schema: removed the top-level `icon` and `contactEmail` (the schema has `additionalProperties: false`, so they made the whole manifest invalid). The support email stays in `author.email`.
+- `defaultPrompt` is a single string.
+- The pack scripts now include `icon.png`, which `logo` and `composerIcon` point to.
+- `scripts/validate.js` checks the allowed top-level keys instead of requiring the forbidden ones.
+
 ## [0.2.0] - 2026-11-24
 
 ### Changed
