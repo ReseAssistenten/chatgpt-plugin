@@ -26,7 +26,7 @@
         "termsOfServiceURL": "https://reseassistenten.se/terms",
         "logo": "./icon.png",
         "composerIcon": "./icon.png",
-        "defaultPrompt": "What trips do I have planned?"
+        "defaultPrompt": "Are there any SAS award seats in Business from Stockholm to Tokyo in March?"
       },
       "review": {
         "test_cases": {
